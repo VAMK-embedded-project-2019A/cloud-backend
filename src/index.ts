@@ -1,8 +1,12 @@
 import https from 'https'
-import app from './app'
 import fs from 'fs'
+import app from './app'
+import connect from './connect'
+import Song from './models'
 
-const port = 3001
+const port = 2001
+
+connect('mongodb://localhost:27017/espp')
 
 https.createServer({
   key: fs.readFileSync('./ssl/server.key'),
