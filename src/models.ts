@@ -12,4 +12,4 @@ const SongSchema: Schema = new Schema({
   tag: { type: String, required: true }
 });
 
-export default mongoose.model<ISong>('Song', SongSchema)
+export const Song = mongoose.model<ISong>('Song', SongSchema)

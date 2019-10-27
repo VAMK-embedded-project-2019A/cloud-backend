@@ -1,7 +1,7 @@
 import express from 'express'
 import { Request, Response } from 'express'
 import { get_weather } from './api'
-import Song from './models'
+import { Song } from './models'
 
 // setup routes
 const app = express()
@@ -30,9 +30,14 @@ async function view_song(req: Request, res: Response) {
   // parse GET query
   let { tag } = req.query
 
+  // get song by query
   let songs = await Song.find({ tag })
-  res.send(songs.map(song => {
-    const { name, fileName, tag } = song
-    return { name, fileName, tag }
-  }))
+
+  // map data and return
+  res.send({
+    songs: songs.map(song => {
+      const { name, fileName, tag } = song
+      return { name, fileName, tag }
+    })
+  })
 }

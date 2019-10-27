@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build-maintain": "parcel build maintain/index.ts -d dist/maintain --target node",
+    "maintain": "npm run build-maintain && node dist/maintain/index.js",
     "build": "parcel build src/index.ts -d dist --target node",
     "start": "npm run build && node dist/index.js",
     "lint": "tslint -c ./tslint.json --fix 'src/**/*.ts*'",
