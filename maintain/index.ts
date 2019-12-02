@@ -36,6 +36,8 @@ const state = {
         list.push({ name, fileName, tag })
     }
     function cap(s: string) {
+      const special = ['ft.', 'ft']
+      if (special.includes(s)) return s
       return s[0].toUpperCase() + s.slice(1, s.length)
     }
 
@@ -58,8 +60,15 @@ const state = {
     }
 
     list = list.filter(s => l.includes(s.fileName))
+    list.sort((a, b) => {
+      if (a.tag == 'default' && b.tag == 'default') return a.name.localeCompare(b.name)
+      if (a.tag == 'default') return -1
+      if (b.tag == 'default') return 1
+      if (a.tag != b.tag) return a.tag.localeCompare(b.tag)
+      return a.name.localeCompare(b.name)
+    })
 
-    fs.writeFileSync(file_name, JSON.stringify({ data: list }), 'utf8')
+    fs.writeFileSync(file_name, JSON.stringify({ data: list }, null, 4), 'utf8')
     await Song.deleteMany({})
     for (const s of list) {
       Song.create(s).catch(console.log)
