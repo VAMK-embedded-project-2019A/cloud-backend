@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
 export default (db: string) => {
+  console.log('Connecting...')
   const connect = async () => {
     await mongoose.connect(db, {
       useNewUrlParser: true,
