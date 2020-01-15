@@ -4,6 +4,8 @@ import vm, { Context } from 'vm'
 import fs from 'fs'
 import path from 'path'
 
+const song_path = '/home/espp/songs/';
+
 import { Song, ISong } from '../src/models'
 
 interface pSong {
@@ -76,9 +78,6 @@ const state = {
 
     return list.reduce<string>((acc: string, song: pSong) => `${acc}\n${song2str(song)}`, `Song list (size: ${list.length}):`)
   },
-
-  async test(s: string) {
-  }
 }
 
 const opts = {
@@ -118,6 +117,6 @@ function song2str(song: ISong | pSong) {
 }
 
 function ls() {
-  return fs.readdirSync('/home/espp/songs/')
+  return fs.readdirSync(song_path)
     .filter(file => ['.wav', '.mp3'].includes(path.extname(file)))
 }
