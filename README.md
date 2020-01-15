@@ -20,11 +20,11 @@ Open the `src/index.ts` file with your preferred text-editor and replace the str
 ### Running the server
 In the project root folder, run `npm install` to install the dependencies.
 Run `npm run start` to start the server.
-## Setup sftp
+### Setup sftp
 Follow [this guide](https://www.linuxtechi.com/configure-sftp-chroot-debian10/) to setup the sftp.
 Replace the line `ForceCommand internal-sftp` with `ForceCommand internal-sftp -R` in the `/etc/ssh/sshd_config` file to set the sftp server to be read-only.
 ### Maintainance for the database
-Add songs to the path declared in `maintain/index.ts`, function `ls`  
+Put the path to the folder containing the songs into the `song_path` constant declared in `maintain/index.ts`  
 Run `npm run build-maintain` to build the maintain script  
 Run `npm run maintain` to start the maintain REPL  
 In the maintain REPL, run `update()` to update the database
