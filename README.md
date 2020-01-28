@@ -6,22 +6,23 @@ This software officially support the following OS and sofware:
 * Debian 10 (buster) on amd64
 * NodeJS 10.16.2, npm 6.13.1
 * OpenSSL 1.1.1d
-* MongoDB 4.2.1
+* MongoDB 4.2.1  
+
 Other versions or softwares are not guaranteed to be compatible with this software.
 ### Acquiring the software
-Before installation, make sure you have the OS and all dependencies up and running.
-The software can be acquire from [github](https://github.com/VAMK-embedded-project-2019A/Backend "Backend").
+Before installation, make sure you have the OS and all dependencies up and running.  
+The software can be acquire from [github](https://github.com/VAMK-embedded-project-2019A/Backend "Backend").  
 You can download the zip file or clone the git repos to your server machine.
 ### Generate RSA key
 Run the script keygen.sh in the project root folder to generate the RSA keys. The keys will be stored in the ssl folder.
 ### Configured the database
-Make sure you have the MongoDB database up and running, and acquire the connection string before hand.
+Make sure you have the MongoDB database up and running, and acquire the connection string before hand.  
 Open the `src/index.ts` file with your preferred text-editor and replace the string in the `connect()` function with your connection string.
 ### Running the server
-In the project root folder, run `npm install` to install the dependencies.
+In the project root folder, run `npm install` to install the dependencies.  
 Run `npm run start` to start the server.
 ### Setup sftp
-Follow [this guide](https://www.linuxtechi.com/configure-sftp-chroot-debian10/) to setup the sftp.
+Follow [this guide](https://www.linuxtechi.com/configure-sftp-chroot-debian10/) to setup the sftp.  
 Replace the line `ForceCommand internal-sftp` with `ForceCommand internal-sftp -R` in the `/etc/ssh/sshd_config` file to set the sftp server to be read-only.
 ### Maintainance for the database
 Put the path to the folder containing the songs into the `song_path` constant declared in `maintain/index.ts`  
